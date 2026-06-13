@@ -1,0 +1,171 @@
+.container {
+  padding: 20rpx;
+  background: #F5F5F5;
+  min-height: 100vh;
+}
+
+.filter-bar {
+  display: flex;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.filter-item {
+  flex: 1;
+  text-align: center;
+  padding: 15rpx 0;
+  font-size: 28rpx;
+  color: #666;
+  border-radius: 12rpx;
+}
+
+.filter-item.active {
+  background: #FF8C42;
+  color: #fff;
+}
+
+.order-list {
+  padding-bottom: 20rpx;
+}
+
+.order-card {
+  background: #fff;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  background: #FAFAFA;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+
+.order-no {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.order-status {
+  font-size: 26rpx;
+  color: #FF8C42;
+  font-weight: 500;
+}
+
+.status-completed {
+  color: #4CAF50;
+}
+
+.status-picked {
+  color: #999;
+}
+
+.order-body {
+  padding: 30rpx;
+}
+
+.order-info-row {
+  display: flex;
+  margin-bottom: 15rpx;
+  font-size: 28rpx;
+}
+
+.label {
+  color: #999;
+  min-width: 160rpx;
+}
+
+.value {
+  color: #333;
+}
+
+.pickup-code {
+  font-size: 32rpx;
+  color: #FF8C42;
+  font-weight: bold;
+}
+
+.order-items {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx dashed #F5F5F5;
+}
+
+.item-text {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  background: #FAFAFA;
+  border-top: 1rpx solid #F5F5F5;
+}
+
+.order-total {
+  font-size: 36rpx;
+  color: #FF8C42;
+  font-weight: bold;
+}
+
+.order-actions {
+  display: flex;
+  gap: 10rpx;
+}
+
+.btn-print {
+  background: #E3F2FD;
+  color: #2196F3;
+  border: none;
+  font-size: 24rpx;
+}
+
+.btn-reply {
+  background: #F3E5F5;
+  color: #9C27B0;
+  border: none;
+  font-size: 24rpx;
+}
+
+.btn-complete {
+  background: #FFF3E0;
+  color: #FF8C42;
+  border: none;
+  font-size: 24rpx;
+}
+
+.btn-pickup {
+  background: #E8F5E9;
+  color: #4CAF50;
+  border: none;
+  font-size: 24rpx;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200rpx;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #666;
+}

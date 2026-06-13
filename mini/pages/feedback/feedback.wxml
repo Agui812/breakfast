@@ -1,0 +1,49 @@
+<view class="container">
+  <view class="header">
+    <text class="title">意见反馈</text>
+    <text class="subtitle">您的建议是我们进步的动力</text>
+  </view>
+
+  <view class="form-card">
+    <view class="form-group">
+      <text class="label">反馈类型</text>
+      <view class="type-list">
+        <view class="type-item {{feedbackType === item ? 'selected' : ''}}" 
+              wx:for="{{feedbackTypes}}" 
+              wx:key="index"
+              bindtap="onSelectType"
+              data-type="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <text class="label">反馈内容</text>
+      <textarea 
+        class="content-input" 
+        placeholder="请详细描述您遇到的问题或建议" 
+        maxlength="500"
+        value="{{content}}"
+        bindinput="onContentInput"
+      />
+      <text class="word-count">{{content.length}}/500</text>
+    </view>
+
+    <view class="form-group">
+      <text class="label">联系方式（选填）</text>
+      <input 
+        class="contact-input" 
+        placeholder="手机号或邮箱" 
+        value="{{contact}}"
+        bindinput="onContactInput"
+      />
+    </view>
+  </view>
+
+  <view class="submit-btn-wrap">
+    <button class="submit-btn" bindtap="onSubmit" disabled="{{!feedbackType || !content}}">
+      提交反馈
+    </button>
+  </view>
+</view>

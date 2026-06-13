@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="order-list" wx:if="{{orders.length > 0}}">
+    <view class="order-card" wx:for="{{orders}}" wx:key="id">
+      <view class="order-header">
+        <text class="order-no">订单号：{{item.orderNo}}</text>
+        <text class="order-status {{item.status === 'completed' ? 'status-completed' : ''}} {{item.status === 'picked' ? 'status-picked' : ''}}">
+          {{item.status === 'pending' ? '待制作' : item.status === 'completed' ? '已完成' : '已取餐'}}
+        </text>
+      </view>
+      
+      <view class="order-body">
+        <view class="order-items">
+          <text class="item-text" wx:for="{{item.items}}" wx:key="index" wx:for-item="food">
+            {{food.name}} x{{food.quantity}}
+          </text>
+        </view>
+        <view class="order-info">
+          <text class="pickup-code">取餐码：{{item.pickupCode}}</text>
+          <text class="pickup-time">自取时间：{{item.pickupTime}}</text>
+        </view>
+      </view>
+      
+      <view class="order-footer">
+        <text class="order-total">¥{{item.totalPrice}}</text>
+        <text class="order-time">{{item.createTime}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无订单</text>
+    <text class="empty-hint">快去选购美味早餐吧</text>
+  </view>
+</view>

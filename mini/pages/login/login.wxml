@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="logo-section">
+    <view class="logo-icon">
+      <text class="logo-text">早</text>
+    </view>
+    <text class="app-name">早餐店预约自取</text>
+    <text class="app-slogan">新鲜现做 到店即取</text>
+  </view>
+
+  <view class="login-section">
+    <view class="login-card">
+      <text class="card-title">欢迎登录</text>
+      <text class="card-desc">登录后可以享受更多便利服务</text>
+      
+      <button class="wechat-login-btn" bindtap="onLogin">
+
+        <text class="btn-text">微信一键登录</text>
+      </button>
+      
+      <text class="login-hint">登录后可查看订单、预设套餐等功能</text>
+    </view>
+  </view>
+
+  <view class="guest-section">
+    <button class="guest-btn" bindtap="onGuestLogin">
+      暂不登录，继续浏览
+    </button>
+  </view>
+</view>

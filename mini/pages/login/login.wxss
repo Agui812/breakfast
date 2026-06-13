@@ -1,0 +1,128 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FF9A56 0%, #FFB87A 40%, #FAF7F2 60%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40rpx;
+}
+
+.logo-section {
+  margin-top: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 160rpx;
+  height: 160rpx;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16rpx 48rpx rgba(255, 154, 86, 0.3);
+}
+
+.logo-text {
+  font-size: 80rpx;
+  font-weight: 700;
+  color: #FF9A56;
+}
+
+.app-name {
+  margin-top: 40rpx;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.app-slogan {
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.login-section {
+  margin-top: 120rpx;
+  width: 100%;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 32rpx;
+  padding: 60rpx 40rpx;
+  box-shadow: 0 16rpx 48rpx rgba(61, 46, 31, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #3D2E1F;
+}
+
+.card-desc {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: #8B7355;
+}
+
+.wechat-login-btn {
+  margin-top: 60rpx;
+  width: 100%;
+  background: linear-gradient(135deg, #07C160 0%, #06AD56 100%);
+  border-radius: 50rpx;
+  padding: 28rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  box-shadow: 0 8rpx 24rpx rgba(7, 193, 96, 0.3);
+  border: none;
+}
+
+.wechat-login-btn::after {
+  border: none;
+}
+
+.wechat-icon {
+  font-size: 36rpx;
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-text {
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: 600;
+}
+
+.login-hint {
+  margin-top: 24rpx;
+  font-size: 22rpx;
+  color: #B8A88A;
+}
+
+.guest-section {
+  margin-top: 40rpx;
+  width: 100%;
+}
+
+.guest-btn {
+  width: 100%;
+  background: transparent;
+  border: 2rpx solid rgba(255, 255, 255, 0.6);
+  border-radius: 50rpx;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.guest-btn::after {
+  border: none;
+}

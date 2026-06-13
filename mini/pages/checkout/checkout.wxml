@@ -1,0 +1,73 @@
+<view class="container">
+  <view class="section">
+    <text class="section-title">选择餐品</text>
+    <view class="cart-item" wx:for="{{cartItems}}" wx:key="id">
+      <text class="item-name">{{item.name}}</text>
+      <view class="item-detail">
+        <text class="item-price">¥{{item.price}}</text>
+        <text class="item-quantity">x{{item.quantity}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">用餐方式</text>
+    <view class="dine-type">
+      <view class="dine-option {{dineType === 'takeaway' ? 'selected' : ''}}" bindtap="onSelectDineType" data-type="takeaway">
+        <text class="dine-icon">📦</text>
+        <text class="dine-text">打包带走</text>
+      </view>
+      <view class="dine-option {{dineType === 'dinein' ? 'selected' : ''}}" bindtap="onSelectDineType" data-type="dinein">
+        <text class="dine-icon">🍽️</text>
+        <text class="dine-text">堂食</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{dineType === 'dinein'}}">
+    <view class="seat-info" bindtap="onSelectSeat">
+      <text class="seat-label">座位号</text>
+      <text class="seat-value">{{selectedSeat || '点击选择座位'}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">选择自取时间</text>
+    <view class="time-slots">
+      <view 
+        class="time-slot {{selectedTimeSlot === item ? 'selected' : ''}}" 
+        wx:for="{{timeSlots}}" 
+        wx:key="index"
+        bindtap="onSelectTime"
+        data-slot="{{item}}"
+      >
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">联系电话（选填）</text>
+    <input 
+      class="phone-input" 
+      type="number" 
+      maxlength="11" 
+      placeholder="请输入手机号码" 
+      bindinput="onPhoneInput"
+      value="{{phone}}"
+    />
+  </view>
+
+  <view class="summary">
+    <view class="summary-row">
+      <text>共{{totalQuantity}}份</text>
+      <text class="total-price">¥{{totalPrice}}</text>
+    </view>
+  </view>
+
+  <view class="submit-bar">
+    <button class="submit-btn" bindtap="onSubmit" disabled="{{!selectedTimeSlot || !dineType || (dineType === 'dinein' && !selectedSeat)}}">
+      {{!dineType ? '请选择用餐方式' : (dineType === 'dinein' && !selectedSeat ? '请先选择座位' : (!selectedTimeSlot ? '请选择自取时间' : '确认下单'))}}
+    </button>
+  </view>
+</view>

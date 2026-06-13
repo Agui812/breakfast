@@ -1,0 +1,62 @@
+<view class="container">
+  <view class="filter-bar">
+    <view class="filter-item {{filterStatus === 'all' ? 'active' : ''}}" bindtap="onFilter" data-status="all">
+      全部
+    </view>
+    <view class="filter-item {{filterStatus === 'pending' ? 'active' : ''}}" bindtap="onFilter" data-status="pending">
+      待制作
+    </view>
+    <view class="filter-item {{filterStatus === 'completed' ? 'active' : ''}}" bindtap="onFilter" data-status="completed">
+      已完成
+    </view>
+    <view class="filter-item {{filterStatus === 'picked' ? 'active' : ''}}" bindtap="onFilter" data-status="picked">
+      已取餐
+    </view>
+  </view>
+
+  <view class="order-list" wx:if="{{filteredOrders.length > 0}}">
+    <view class="order-card" wx:for="{{filteredOrders}}" wx:key="id">
+      <view class="order-header">
+        <text class="order-no">订单号：{{item.orderNo}}</text>
+        <text class="order-status {{item.status === 'completed' ? 'status-completed' : ''}} {{item.status === 'picked' ? 'status-picked' : ''}}">
+          {{item.status === 'pending' ? '待制作' : item.status === 'completed' ? '已完成' : '已取餐'}}
+        </text>
+      </view>
+      
+      <view class="order-body">
+        <view class="order-info-row">
+          <text class="label">取餐码：</text>
+          <text class="value pickup-code">{{item.pickupCode}}</text>
+        </view>
+        <view class="order-info-row">
+          <text class="label">自取时间：</text>
+          <text class="value">{{item.pickupTime}}</text>
+        </view>
+        <view class="order-info-row" wx:if="{{item.phone}}">
+          <text class="label">联系电话：</text>
+          <text class="value">{{item.phone}}</text>
+        </view>
+        <view class="order-items">
+          <text class="item-text" wx:for="{{item.items}}" wx:key="index" wx:for-item="food">
+            {{food.name}} x{{food.quantity}}
+          </text>
+        </view>
+      </view>
+      
+      <view class="order-footer">
+        <text class="order-total">¥{{item.totalPrice}}</text>
+        <view class="order-actions">
+          <button class="btn-print" size="mini" bindtap="onPrint" data-id="{{item.id}}">打印</button>
+          <button class="btn-reply" size="mini" bindtap="onReply" data-id="{{item.id}}">回复</button>
+          <button class="btn-complete" size="mini" wx:if="{{item.status === 'pending'}}" bindtap="onComplete" data-id="{{item.id}}">完成</button>
+          <button class="btn-pickup" size="mini" wx:if="{{item.status === 'completed'}}" bindtap="onPickup" data-id="{{item.id}}">核销</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无订单</text>
+  </view>
+</view>

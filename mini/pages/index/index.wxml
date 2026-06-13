@@ -1,0 +1,79 @@
+<view class="container">
+  <view class="header">
+    <text class="title">今日早餐</text>
+    <text class="subtitle">新鲜现做 到店即取</text>
+  </view>
+
+  <view class="main-content">
+    <scroll-view class="category-list" scroll-y>
+      <view class="category-item {{activeCategory === index ? 'active' : ''}}" 
+            wx:for="{{categories}}" 
+            wx:key="index"
+            bindtap="onCategoryTap"
+            data-index="{{index}}">
+        <text class="category-name">{{item.name}}</text>
+      </view>
+    </scroll-view>
+
+    <scroll-view class="food-list" scroll-y>
+      <view class="food-item" wx:for="{{foods}}" wx:key="id">
+        <image class="food-image" wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill" />
+        <view class="food-content">
+          <view class="food-top">
+            <text class="food-name">{{item.name}}</text>
+            <view class="food-action">
+              <view class="quantity-control" wx:if="{{item.status !== 'soldout'}}">
+                <view class="btn-minus {{cart[item.id] <= 0 ? 'disabled' : ''}}" bindtap="onMinus" data-id="{{item.id}}">
+                  <text>-</text>
+                </view>
+                <text class="quantity">{{cart[item.id] || 0}}</text>
+                <view class="btn-plus" bindtap="onPlus" data-id="{{item.id}}">
+                  <text>+</text>
+                </view>
+              </view>
+              <text class="soldout-badge" wx:if="{{item.status === 'soldout'}}">已售罄</text>
+            </view>
+          </view>
+          <view class="food-bottom">
+            <text class="food-stock {{item.status === 'soldout' ? 'soldout-text' : ''}}" style="height: 30px;">
+              {{item.status === 'soldout' ? '已售罄' : '剩' + item.stock + '份'}}
+            </text>
+            <text class="food-price">¥{{item.price}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="cart-bar {{totalQuantity > 0 ? 'show' : ''}} {{cartExpanded ? 'expanded' : ''}}" bindtap="onCartTap">
+    <view class="cart-info">
+      <text class="cart-count">{{totalQuantity}}份</text>
+      <text class="cart-total">¥{{totalPrice}}</text>
+    </view>
+    <text class="checkout-btn" catchtap="onCheckout">去下单</text>
+  </view>
+
+  <view class="cart-detail {{cartExpanded ? 'show' : ''}}" catchtap="onStopPropagation">
+    <view class="cart-detail-header">
+      <text class="cart-detail-title">已选餐品</text>
+      <text class="cart-clear" bindtap="onClearCart">清空</text>
+    </view>
+    <scroll-view class="cart-detail-list" scroll-y style="width: 350px;">
+      <view class="cart-detail-item" wx:for="{{cartItems}}" wx:key="id">
+        <view class="cart-detail-info">
+          <text class="cart-detail-name">{{item.name}}</text>
+          <text class="cart-detail-price">¥{{item.price}}</text>
+        </view>
+        <view class="cart-detail-control">
+          <view class="btn-minus {{item.quantity <= 1 ? 'disabled' : ''}}" bindtap="onMinusDetail" data-id="{{item.id}}">
+            <text>-</text>
+          </view>
+          <text class="quantity">{{item.quantity}}</text>
+          <view class="btn-plus" bindtap="onPlusDetail" data-id="{{item.id}}">
+            <text>+</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

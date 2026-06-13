@@ -1,0 +1,48 @@
+<view class="container">
+  <view class="food-list">
+    <view class="food-item" wx:for="{{foods}}" wx:key="id">
+      <view class="food-info">
+        <text class="food-name">{{item.name}}</text>
+        <view class="food-detail">
+          <text class="food-price">¥{{item.price}}</text>
+          <text class="food-stock">库存：{{item.stock}}/{{item.dailyLimit}}</text>
+        </view>
+      </view>
+      <view class="food-action">
+        <button class="btn-edit" size="mini" bindtap="onEdit" data-id="{{item.id}}">编辑</button>
+        <button class="btn-delete" size="mini" bindtap="onDelete" data-id="{{item.id}}">删除</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="add-btn" bindtap="onAdd">
+    <text class="add-icon">+</text>
+    <text class="add-text">添加餐品</text>
+  </view>
+
+  <view class="modal" wx:if="{{showModal}}">
+    <view class="modal-content">
+      <text class="modal-title">{{editingFood ? '编辑餐品' : '添加餐品'}}</text>
+      
+      <view class="form-group">
+        <text class="label">餐品名称</text>
+        <input class="input" value="{{formData.name}}" bindinput="onNameInput" placeholder="请输入餐品名称" />
+      </view>
+      
+      <view class="form-group">
+        <text class="label">价格（元）</text>
+        <input class="input" type="digit" value="{{formData.price}}" bindinput="onPriceInput" placeholder="请输入价格" />
+      </view>
+      
+      <view class="form-group">
+        <text class="label">每日限量</text>
+        <input class="input" type="number" value="{{formData.dailyLimit}}" bindinput="onLimitInput" placeholder="请输入每日限量" />
+      </view>
+      
+      <view class="modal-buttons">
+        <button class="btn-cancel" bindtap="onCancel">取消</button>
+        <button class="btn-confirm" bindtap="onConfirm">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,144 @@
+<view class="container">
+  <view class="profile-header">
+    <block wx:if="{{isLogin}}">
+      <image class="avatar" src="{{avatarUrl}}" mode="aspectFill" />
+      <text class="nickname">{{nickName}}</text>
+    </block>
+    <block wx:else>
+      <view class="avatar">
+        <text class="avatar-text">早</text>
+      </view>
+      <text class="nickname">欢迎使用早餐店</text>
+    </block>
+    <text class="subtitle">新鲜现做 到店即取</text>
+  </view>
+
+  <view class="login-card" wx:if="{{!isLogin}}">
+    <button class="login-btn" bindtap="onLogin">
+      <text class="login-icon">微</text>
+      <text class="login-text">微信一键登录</text>
+    </button>
+    <text class="login-hint">登录后可以查看订单记录</text>
+  </view>
+
+  <view class="info-card" wx:if="{{isLogin}}">
+    <view class="card-header">
+      <text class="card-title">我的预设(随机座位)</text>
+      <text class="add-btn" bindtap="onAddPreset">+ 新增</text>
+    </view>
+    <view class="preset-list" wx:if="{{presets.length > 0}}">
+      <view class="preset-item" wx:for="{{presets}}" wx:key="id">
+        <view class="preset-info" bindtap="onQuickOrder" data-id="{{item.id}}">
+          <text class="preset-name">{{item.name}}</text>
+          <text class="preset-detail">{{item.items}}</text>
+          <view class="preset-meta">
+            <text class="preset-time" wx:if="{{item.timeSlot}}">⏰ {{item.timeSlot}}</text>
+            <text class="preset-price">¥{{item.totalPrice}}</text>
+          </view>
+        </view>
+        <view class="preset-actions">
+          <text class="action-btn" bindtap="onEditPreset" data-id="{{item.id}}">编辑</text>
+          <text class="action-btn delete" bindtap="onDeletePreset" data-id="{{item.id}}">删除</text>
+        </view>
+      </view>
+    </view>
+    <view class="empty-preset" wx:else>
+      <text class="empty-hint">暂无预设，点击上方"新增"添加</text>
+    </view>
+  </view>
+
+  <view class="info-card">
+    <text class="card-title">使用指南</text>
+    <view class="guide-item">
+      <text class="guide-num">1</text>
+      <text class="guide-text">在首页选择想要的早餐</text>
+    </view>
+    <view class="guide-item">
+      <text class="guide-num">2</text>
+      <text class="guide-text">选择自取时间并下单</text>
+    </view>
+    <view class="guide-item">
+      <text class="guide-num">3</text>
+      <text class="guide-text">到店出示取餐码取餐</text>
+    </view>
+  </view>
+
+  <view class="info-card">
+    <text class="card-title">营业时间</text>
+    <text class="time-text">{{openTime}} - {{closeTime}}</text>
+  </view>
+
+  <view class="info-card">
+    <view class="menu-item" bindtap="onFeedback">
+      <text class="menu-text">意见反馈</text>
+      <text class="menu-arrow">></text>
+    </view>
+  </view>
+
+  <view class="modal" wx:if="{{showModal}}">
+    <view class="modal-content">
+      <text class="modal-title">{{editingPreset ? '编辑预设' : '新增预设'}}</text>
+      
+      <view class="form-group">
+        <text class="label">预设名称</text>
+        <input class="input" value="{{formData.name}}" bindinput="onNameInput" placeholder="留空自动生成套餐名" />
+      </view>
+      
+      <view class="form-group">
+        <text class="label">选择餐品</text>
+        <view class="food-select">
+          <view class="food-option" 
+                wx:for="{{availableFoods}}" 
+                wx:key="id">
+            <image class="food-image" wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill" />
+            <view class="food-info">
+              <text class="food-name">{{item.name}}</text>
+              <text class="food-price">¥{{item.price}}</text>
+            </view>
+            <view class="food-qty">
+              <text class="qty-btn {{selectedFoods[item.id] ? '' : 'disabled'}}" bindtap="onMinusFood" data-id="{{item.id}}">-</text>
+              <text class="qty-num">{{selectedFoods[item.id] || 0}}</text>
+              <text class="qty-btn" bindtap="onPlusFood" data-id="{{item.id}}">+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <view class="form-group">
+        <text class="label">用餐方式</text>
+        <view class="dine-type">
+          <view class="dine-option {{formData.dineType === 'takeout' ? 'selected' : ''}}" 
+                bindtap="onSelectDineType" 
+                data-type="takeout">
+            <text class="dine-icon">🥡</text>
+            <text class="dine-text">打包</text>
+          </view>
+          <view class="dine-option {{formData.dineType === 'dinein' ? 'selected' : ''}}" 
+                bindtap="onSelectDineType" 
+                data-type="dinein">
+            <text class="dine-icon">️</text>
+            <text class="dine-text">堂食</text>
+          </view>
+        </view>
+      </view>
+      
+      <view class="form-group">
+        <text class="label">默认自取时间（可选）</text>
+        <view class="time-slots">
+          <view class="time-slot {{formData.timeSlot === item ? 'selected' : ''}}" 
+                wx:for="{{timeSlots}}" 
+                wx:key="index"
+                bindtap="onSelectTime"
+                data-slot="{{item}}">
+            {{item}}
+          </view>
+        </view>
+      </view>
+      
+      <view class="modal-buttons">
+        <button class="btn-cancel" bindtap="onCancel">取消</button>
+        <button class="btn-confirm" bindtap="onConfirm">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

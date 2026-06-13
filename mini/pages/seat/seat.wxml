@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="header">
+    <text class="title">选择座位</text>
+    <text class="subtitle">请选择您想要就坐的位置</text>
+  </view>
+
+  <view class="seat-map">
+    <view class="seat-row" wx:for="{{seatRows}}" wx:key="index" wx:for-item="row">
+      <view class="seat {{item.status === 'available' ? '' : (item.status === 'selected' ? 'selected' : 'occupied')}}" 
+            wx:for="{{row.seats}}" 
+            wx:key="id"
+            wx:for-item="item"
+            bindtap="onSelectSeat"
+            data-row="{{row.rowIndex}}"
+            data-col="{{item.colIndex}}">
+        <text class="seat-num">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="seat-legend">
+    <view class="legend-item">
+      <view class="legend-box available"></view>
+      <text class="legend-text">可选</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-box selected"></view>
+      <text class="legend-text">已选</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-box occupied"></view>
+      <text class="legend-text">已占用</text>
+    </view>
+  </view>
+
+  <view class="selected-info" wx:if="{{selectedSeat}}">
+    <text class="info-label">已选座位</text>
+    <text class="info-value">{{selectedSeat.label}}</text>
+  </view>
+
+  <view class="submit-bar">
+    <button class="submit-btn" bindtap="onConfirm" disabled="{{!selectedSeat}}">
+      {{selectedSeat ? '确认座位' : '请选择座位'}}
+    </button>
+  </view>
+</view>

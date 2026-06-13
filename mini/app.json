@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/checkout/checkout",
+    "pages/order/order",
+    "pages/message/message",
+    "pages/mine/mine",
+    "pages/admin/index",
+    "pages/admin/food",
+    "pages/admin/order",
+    "pages/login/login",
+    "pages/seat/seat",
+    "pages/feedback/feedback"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "早餐店预约自取",
+    "navigationBarBackgroundColor": "#FF9A56",
+    "backgroundColor": "#FAF7F2"
+  },
+  "tabBar": {
+    "color": "#8B7355",
+    "selectedColor": "#FF9A56",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "点餐",
+        "iconPath": "images/tab/food.png",
+        "selectedIconPath": "images/tab/food-active.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "images/tab/order.png",
+        "selectedIconPath": "images/tab/order-active.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "images/tab/message.png",
+        "selectedIconPath": "images/tab/message-active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/tab/mine.png",
+        "selectedIconPath": "images/tab/mine-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

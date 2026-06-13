@@ -1,0 +1,36 @@
+<view class="container">
+  <view class="admin-header">
+    <text class="title">商家管理后台</text>
+  </view>
+
+  <view class="menu-grid">
+    <view class="menu-card" bindtap="goToFood">
+      <text class="card-icon">🍜</text>
+      <text class="card-title">餐品管理</text>
+      <text class="card-desc">管理餐品信息和库存</text>
+    </view>
+    <view class="menu-card" bindtap="goToOrder">
+      <text class="card-icon">📋</text>
+      <text class="card-title">订单管理</text>
+      <text class="card-desc">查看和处理订单</text>
+    </view>
+  </view>
+
+  <view class="stats-section">
+    <text class="section-title">今日数据</text>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-value">{{todayOrders}}</text>
+        <text class="stat-label">今日订单</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">¥{{todayRevenue}}</text>
+        <text class="stat-label">今日营收</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{todayItems}}</text>
+        <text class="stat-label">售出份数</text>
+      </view>
+    </view>
+  </view>
+</view>

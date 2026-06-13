@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="message-list" wx:if="{{messages.length > 0}}">
+    <view class="message-item" wx:for="{{messages}}" wx:key="id">
+      <view class="message-icon {{item.type}}">
+        <text class="icon-text">{{item.icon}}</text>
+      </view>
+      <view class="message-content">
+        <view class="message-header">
+          <text class="message-title">{{item.title}}</text>
+          <text class="message-time">{{item.time}}</text>
+        </view>
+        <text class="message-desc">{{item.desc}}</text>
+        <view class="message-action" wx:if="{{item.action}}">
+          <text class="action-btn" bindtap="onActionTap" data-id="{{item.id}}" data-action="{{item.action}}">{{item.actionText}}</text>
+        </view>
+      </view>
+      <view class="unread-dot" wx:if="{{item.unread}}"></view>
+    </view>
+  </view>
+
+  <view class="empty-message" wx:if="{{messages.length === 0}}">
+    <text class="empty-icon"></text>
+    <text class="empty-text">暂无消息</text>
+  </view>
+</view>

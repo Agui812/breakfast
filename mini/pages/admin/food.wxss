@@ -1,0 +1,167 @@
+.container {
+  padding: 20rpx;
+  padding-bottom: 160rpx;
+  background: #F5F5F5;
+  min-height: 100vh;
+}
+
+.food-list {
+  padding-bottom: 20rpx;
+}
+
+.food-item {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.food-info {
+  flex: 1;
+}
+
+.food-name {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  display: block;
+}
+
+.food-detail {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin-top: 10rpx;
+}
+
+.food-price {
+  font-size: 30rpx;
+  color: #FF8C42;
+  font-weight: bold;
+}
+
+.food-stock {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.food-action {
+  display: flex;
+  gap: 10rpx;
+}
+
+.btn-edit {
+  background: #FFF3E0;
+  color: #FF8C42;
+  border: none;
+  font-size: 24rpx;
+}
+
+.btn-delete {
+  background: #FFEBEE;
+  color: #FF4444;
+  border: none;
+  font-size: 24rpx;
+}
+
+.add-btn {
+  position: fixed;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #FF8C42 0%, #FFB347 100%);
+  color: #fff;
+  padding: 20rpx 60rpx;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 140, 66, 0.4);
+}
+
+.add-icon {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.add-text {
+  font-size: 30rpx;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  width: 80%;
+  max-width: 600rpx;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333;
+  display: block;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.form-group {
+  margin-bottom: 30rpx;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.input {
+  width: 100%;
+  padding: 20rpx;
+  background: #F5F5F5;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 40rpx;
+}
+
+.btn-cancel,
+.btn-confirm {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+}
+
+.btn-cancel {
+  background: #F5F5F5;
+  color: #666;
+}
+
+.btn-confirm {
+  background: linear-gradient(135deg, #FF8C42 0%, #FFB347 100%);
+  color: #fff;
+}
