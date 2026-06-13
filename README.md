@@ -166,4 +166,8 @@ npm run dev
 | `/api/feedbacks` | 用户反馈 |
 | `/api/print-logs` | 打印日志 |
 
+## 联系方式
+--微信：y11l28w
+--邮箱：yidiagui695@gmail.com
+
 详细接口文档参见 `back/API接口文档.md` 和 `mini/API接口文档.md`。
