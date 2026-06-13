@@ -1,0 +1,15 @@
+# 环境变量配置文件
+.env
+.env.*
+farmback/.env
+
+# 依赖包文件夹
+node_modules/
+
+# 日志文件
+logs/
+*.log
+
+# 系统临时文件
+.DS_Store
+Thumbs.db
